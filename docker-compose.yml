@@ -1,0 +1,23 @@
+version: '3.6'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - internal
+
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    networks:
+      - internal
+    expose:
+      - 80
+    ports:
+      - 8080:80
+
+networks:
+  internal:
